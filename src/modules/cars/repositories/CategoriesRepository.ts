@@ -1,5 +1,5 @@
-import { Category } from "../model/Category";
-import { ICategoriesRepository } from "./ICategoriesRepository";
+import { ICategoriesRepository } from ".";
+import { Category } from "../model";
 
 export class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];

@@ -1,4 +1,4 @@
-import { Category } from "../model/Category";
+import { Category } from "../model";
 
 export interface ICategoriesRepository {
     findByName(name: string): Category;
