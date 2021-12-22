@@ -7,17 +7,13 @@ const categoryRoutes = Router();
 const categoriesRepository = new CategoriesRepository();
 
 categoryRoutes.post("/", (request, response) => {
-    try {
-        const { name, description } = request.body;
+    const { name, description } = request.body;
 
-        const createCategoryService = new CreateCategoryService(
-            categoriesRepository
-        );
-        createCategoryService.execute({ name, description });
-        return response.status(201).send();
-    } catch (error) {
-        return response.status(400).send();
-    }
+    const createCategoryService = new CreateCategoryService(
+        categoriesRepository
+    );
+    createCategoryService.execute({ name, description });
+    return response.status(201).send();
 });
 
 categoryRoutes.get("/", (_, response) => {

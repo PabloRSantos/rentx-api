@@ -1,4 +1,4 @@
 export * from "./CategoriesRepository";
 export * from "./ICategoriesRepository";
-// export * from "./ISpecificationRepository";
-// export * from "./SpecificationRepository";
+export * from "./ISpecificationRepository";
+export * from "./SpecificationRepository";
