@@ -1,4 +1,3 @@
-export * from "./CategoriesRepository";
+export * from "./implementations";
 export * from "./ICategoriesRepository";
 export * from "./ISpecificationRepository";
-export * from "./SpecificationRepository";

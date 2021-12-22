@@ -1,8 +1,8 @@
 import { Category } from "../model";
 
 export interface ICategoriesRepository {
-    findByName(name: string): Category;
-    list(): Category[];
+    findByName(name: string): Promise<Category>;
+    list(): Promise<Category[]>;
     create(data: ICategoriesRepository.ICreateDTO): void;
 }
 

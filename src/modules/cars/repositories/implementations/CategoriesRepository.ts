@@ -1,11 +1,21 @@
-import { ICategoriesRepository } from ".";
-import { Category } from "../model";
+import { ICategoriesRepository } from "..";
+
+import { Category } from "../../model";
 
 export class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[];
+    private static INSTANCE: ICategoriesRepository;
 
-    constructor() {
+    private constructor() {
         this.categories = [];
+    }
+
+    public static getInstance(): ICategoriesRepository {
+        if (!CategoriesRepository.INSTANCE) {
+            CategoriesRepository.INSTANCE = new CategoriesRepository();
+        }
+
+        return CategoriesRepository.INSTANCE;
     }
 
     create({ name, description }: ICategoriesRepository.ICreateDTO): void {
@@ -19,11 +29,11 @@ export class CategoriesRepository implements ICategoriesRepository {
         this.categories.push(category);
     }
 
-    list(): Category[] {
+    async list(): Promise<Category[]> {
         return this.categories;
     }
 
-    findByName(name: string): Category {
+    async findByName(name: string): Promise<Category> {
         const category = this.categories.find(
             (category) => category.name === name
         );
