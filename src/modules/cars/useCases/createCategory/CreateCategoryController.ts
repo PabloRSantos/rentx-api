@@ -1,0 +1,18 @@
+import { HttpRequest, HttpResponse, IController } from "../../../../protocols";
+import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
+
+export class CreateCategoryController implements IController {
+    constructor(
+        private readonly createCategoryUseCase: CreateCategoryUseCase
+    ) {}
+
+    async handle({ body }: HttpRequest): Promise<HttpResponse> {
+        const { name, description } = body;
+
+        await this.createCategoryUseCase.execute({ name, description });
+
+        return {
+            statusCode: 201,
+        };
+    }
+}

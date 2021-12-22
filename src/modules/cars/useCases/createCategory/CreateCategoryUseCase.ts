@@ -1,14 +1,14 @@
-import { ICategoriesRepository } from "../repositories";
+import { ICategoriesRepository } from "../../repositories";
 
 interface IRequest {
     name: string;
     description: string;
 }
 
-export class CreateCategoryService {
+export class CreateCategoryUseCase {
     constructor(private readonly categoriesRepository: ICategoriesRepository) {}
 
-    execute({ description, name }: IRequest): void {
+    async execute({ description, name }: IRequest): Promise<void> {
         const categoryAlreadyExists =
             this.categoriesRepository.findByName(name);
 
