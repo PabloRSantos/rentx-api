@@ -1,4 +1,4 @@
-import { Specification } from "../model";
+import { Specification } from "../../entities";
 
 export interface ISpecificationRepository {
     create(data: ISpecificationRepository.ICreateDTO): void;

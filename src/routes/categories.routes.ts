@@ -3,9 +3,9 @@ import multer from "multer";
 
 import { adaptRoute } from "../adapters";
 import {
-    createCategoryController,
-    importCategoryController,
-    listCategoriesController,
+    makeCategoryController,
+    makeImportCategoryController,
+    makeListCategoriesController,
 } from "../modules/cars/useCases";
 
 const categoryRoutes = Router();
@@ -14,12 +14,12 @@ const upload = multer({
     dest: "./tmp",
 });
 
-categoryRoutes.post("/", adaptRoute(createCategoryController));
-categoryRoutes.get("/", adaptRoute(listCategoriesController));
+categoryRoutes.post("/", adaptRoute(makeCategoryController()));
+categoryRoutes.get("/", adaptRoute(makeListCategoriesController()));
 categoryRoutes.post(
     "/import",
     upload.single("file"),
-    adaptRoute(importCategoryController)
+    adaptRoute(makeImportCategoryController())
 );
 
 export { categoryRoutes };
