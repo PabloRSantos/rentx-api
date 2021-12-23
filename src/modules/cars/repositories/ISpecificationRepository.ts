@@ -2,7 +2,9 @@ import { Specification } from "../model";
 
 export interface ISpecificationRepository {
     create(data: ISpecificationRepository.ICreateDTO): void;
-    findByName(data: ISpecificationRepository.IFindByNameDTO): Specification;
+    findByName(
+        data: ISpecificationRepository.IFindByNameDTO
+    ): Promise<Specification>;
 }
 
 export namespace ISpecificationRepository {

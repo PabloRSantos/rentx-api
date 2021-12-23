@@ -1,18 +1,18 @@
-import { ISpecificationRepository } from "../repositories/ISpecificationRepository";
+import { ISpecificationRepository } from "../../repositories";
 
 interface IRequest {
     name: string;
     description: string;
 }
 
-export class CreateSpecificationService {
+export class CreateSpecificationUseCase {
     constructor(
         private readonly specificationRepository: ISpecificationRepository
     ) {}
 
-    execute({ name, description }: IRequest): void {
+    async execute({ name, description }: IRequest): Promise<void> {
         const specificationAlreadyExists =
-            this.specificationRepository.findByName({ name });
+            await this.specificationRepository.findByName({ name });
 
         if (specificationAlreadyExists) {
             throw new Error(`Specification ${name} already exists`);

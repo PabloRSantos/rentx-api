@@ -21,9 +21,9 @@ export class SpecificationRepository implements ISpecificationRepository {
         this.specifications.push(specification);
     }
 
-    findByName({
+    async findByName({
         name,
-    }: ISpecificationRepository.IFindByNameDTO): Specification {
+    }: ISpecificationRepository.IFindByNameDTO): Promise<Specification> {
         return this.specifications.find(
             (specification) => specification.name === name
         );
