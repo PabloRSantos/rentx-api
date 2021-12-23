@@ -1,7 +1,7 @@
 import { Specification } from "../../entities";
 
 export interface ISpecificationRepository {
-    create(data: ISpecificationRepository.ICreateDTO): void;
+    create(data: ISpecificationRepository.ICreateDTO): Promise<Specification>;
     findByName(
         data: ISpecificationRepository.IFindByNameDTO
     ): Promise<Specification>;
