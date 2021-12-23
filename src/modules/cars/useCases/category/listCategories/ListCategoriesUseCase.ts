@@ -1,5 +1,5 @@
-import { Category } from "../../entities";
-import { ICategoriesRepository } from "../../repositories";
+import { Category } from "@/modules/cars/entities";
+import { ICategoriesRepository } from "@/modules/cars/repositories";
 
 export class ListCategoriesUseCase {
     constructor(private readonly categoriesRepository: ICategoriesRepository) {}

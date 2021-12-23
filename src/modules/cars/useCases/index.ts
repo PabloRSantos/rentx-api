@@ -1,3 +1,2 @@
-export * from "./createCategory";
-export * from "./listCategories";
-export * from "./importCategory";
+export * from "./category";
+export * from "./createSpecfication";

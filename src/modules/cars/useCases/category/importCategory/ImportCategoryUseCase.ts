@@ -1,9 +1,8 @@
-import { rejects } from "assert";
 import { parse as csvParse } from "csv-parse";
 import fs from "fs";
 
-import { IFile } from "../../../../protocols";
-import { ICategoriesRepository } from "../../repositories";
+import { ICategoriesRepository } from "@/modules/cars/repositories";
+import { IFile } from "@/shared/protocols";
 
 interface IRequest {
     file: IFile;

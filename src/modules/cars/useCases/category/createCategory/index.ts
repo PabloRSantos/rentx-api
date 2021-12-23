@@ -1,4 +1,5 @@
-import { CategoriesRepository } from "../../repositories";
+import { CategoriesRepository } from "@/modules/cars/repositories";
+
 import { CreateCategoryController } from "./CreateCategoryController";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 

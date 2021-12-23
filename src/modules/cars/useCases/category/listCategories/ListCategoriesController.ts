@@ -1,4 +1,5 @@
-import { HttpResponse, IController } from "../../../../protocols";
+import { HttpResponse, IController } from "@/shared/protocols";
+
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase";
 
 export class ListCategoriesController implements IController {

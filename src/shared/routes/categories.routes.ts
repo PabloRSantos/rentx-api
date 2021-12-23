@@ -1,12 +1,12 @@
 import { Router } from "express";
 import multer from "multer";
 
-import { adaptRoute } from "../adapters";
 import {
     makeCategoryController,
-    makeImportCategoryController,
     makeListCategoriesController,
-} from "../modules/cars/useCases";
+    makeImportCategoryController,
+} from "../../modules/cars/useCases";
+import { adaptRoute } from "../adapters";
 
 const categoryRoutes = Router();
 
