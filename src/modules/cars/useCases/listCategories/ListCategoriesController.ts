@@ -10,7 +10,7 @@ export class ListCategoriesController implements IController {
         const categories = await this.listCategoriesUseCase.execute();
 
         return {
-            statusCode: 201,
+            statusCode: 200,
             body: categories,
         };
     }
