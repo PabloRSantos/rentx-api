@@ -44,4 +44,28 @@ export const categoriesPath = {
             },
         },
     },
+    import: {
+        post: {
+            tags: ["Category"],
+            summary: "Upload a new category",
+            description: "Upload a new category",
+            requestBody: {
+                content: {
+                    "multipart/form-data": {
+                        schema: {
+                            $ref: "#/schemas/uploadCategory",
+                        },
+                    },
+                },
+            },
+            responses: {
+                204: {
+                    description: "Created",
+                },
+                500: {
+                    description: "Category already exists",
+                },
+            },
+        },
+    },
 };

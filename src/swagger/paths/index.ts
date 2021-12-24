@@ -1,2 +1,1 @@
-export * from "./categoriesPath";
-export * from "./specificationsPath";
+export * from "./cars";

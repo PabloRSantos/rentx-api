@@ -31,3 +31,13 @@ export const categorySchema = {
         },
     },
 };
+
+export const uploadCategorySchema = {
+    type: "object",
+    properties: {
+        file: {
+            type: "string",
+            format: "binary",
+        },
+    },
+};
