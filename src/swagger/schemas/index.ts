@@ -1,2 +1,1 @@
-export * from "./createCategorySchema";
-export * from "./categorySchema";
+export * from "./cars";

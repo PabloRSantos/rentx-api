@@ -4,7 +4,7 @@ import { schemas } from "./schemas";
 export default {
     openapi: "3.0.0",
     info: {
-        title: "RentalX Documentation",
+        title: "RentX Documentation",
         description: "This is an API Rent",
         version: "1.0.0",
         contact: {
@@ -14,6 +14,9 @@ export default {
     tags: [
         {
             name: "Category",
+        },
+        {
+            name: "Specifications",
         },
     ],
     paths,

@@ -1,4 +1,5 @@
-import { ISpecificationRepository } from "../../repositories";
+import { ISpecificationRepository } from "@/modules/cars/repositories";
+import { BadRequestError } from "@/shared/helpers";
 
 interface IRequest {
     name: string;
@@ -15,9 +16,9 @@ export class CreateSpecificationUseCase {
             await this.specificationRepository.findByName({ name });
 
         if (specificationAlreadyExists) {
-            throw new Error(`Specification ${name} already exists`);
+            throw new BadRequestError(`Specification ${name} already exists`);
         }
 
-        this.specificationRepository.create({ name, description });
+        await this.specificationRepository.create({ name, description });
     }
 }

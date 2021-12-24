@@ -1,3 +1,4 @@
+import { noContent } from "@/shared/helpers/http";
 import { IController, HttpRequest, HttpResponse } from "@/shared/protocols";
 
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
@@ -12,8 +13,6 @@ export class CreateCategoryController implements IController {
 
         await this.createCategoryUseCase.execute({ name, description });
 
-        return {
-            statusCode: 201,
-        };
+        return noContent();
     }
 }

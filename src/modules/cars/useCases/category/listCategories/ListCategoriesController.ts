@@ -1,3 +1,4 @@
+import { ok } from "@/shared/helpers";
 import { HttpResponse, IController } from "@/shared/protocols";
 
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase";
@@ -10,9 +11,6 @@ export class ListCategoriesController implements IController {
     async handle(): Promise<HttpResponse> {
         const categories = await this.listCategoriesUseCase.execute();
 
-        return {
-            statusCode: 200,
-            body: categories,
-        };
+        return ok(categories);
     }
 }

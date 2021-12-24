@@ -1,3 +1,4 @@
+import { noContent } from "@/shared/helpers/http";
 import { IController, HttpRequest, HttpResponse } from "@/shared/protocols";
 
 import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
@@ -12,8 +13,6 @@ export class CreateSpecificationController implements IController {
 
         await this.createSpecificationUseCase.execute({ name, description });
 
-        return {
-            statusCode: 201,
-        };
+        return noContent();
     }
 }

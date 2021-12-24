@@ -1,4 +1,5 @@
 import { ICategoriesRepository } from "@/modules/cars/repositories";
+import { BadRequestError } from "@/shared/helpers";
 
 interface IRequest {
     name: string;
@@ -13,7 +14,7 @@ export class CreateCategoryUseCase {
             await this.categoriesRepository.findByName(name);
 
         if (categoryAlreadyExists) {
-            throw new Error("Category Already exists!");
+            throw new BadRequestError("Category Already exists!");
         }
 
         this.categoriesRepository.create({ name, description });

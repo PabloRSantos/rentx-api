@@ -1,17 +1,15 @@
-export const categorySchema = {
+export const createSpecificationSchema = {
     type: "object",
     properties: {
-        id: {
-            type: "string",
-        },
         name: {
             type: "string",
         },
         description: {
             type: "string",
         },
-        created_at: {
-            type: "string",
-        },
+    },
+    example: {
+        name: "any_specification",
+        description: "any_description",
     },
 };
