@@ -10,6 +10,9 @@ export class UsersRepository implements IUsersRepository {
     constructor() {
         this.repository = getRepository(User);
     }
+    findById(id: string): Promise<User> {
+        return this.repository.findOne({ id });
+    }
 
     findByEmail(email: string): Promise<User> {
         return this.repository.findOne({ email });

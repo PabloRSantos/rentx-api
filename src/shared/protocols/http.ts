@@ -20,6 +20,7 @@ export type HttpResponse = {
 export type HttpRequest = {
     body?: any;
     file?: IFile;
+    userId?: string;
     headers?: any;
     params?: {
         [key: string]: string;

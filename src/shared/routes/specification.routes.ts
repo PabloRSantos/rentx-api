@@ -1,10 +1,15 @@
 import { Router } from "express";
 
 import { makeCreateSpecificationController } from "../../modules/cars/useCases";
-import { adaptRoute } from "../adapters";
+import { adaptMiddleware, adaptRoute } from "../adapters";
+import { makeEnsureAuthenticatedMiddleware } from "../middlewares";
 
 const specificationsRouter = Router();
 
-specificationsRouter.post("/", adaptRoute(makeCreateSpecificationController()));
+specificationsRouter.post(
+    "/",
+    adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    adaptRoute(makeCreateSpecificationController())
+);
 
 export { specificationsRouter };
