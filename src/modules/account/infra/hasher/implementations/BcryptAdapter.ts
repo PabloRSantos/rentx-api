@@ -1,8 +1,11 @@
-import { hash } from "bcrypt";
+import { hash, compare } from "bcrypt";
 
-import { IHasher } from "../models";
+import { IHashCompare, IHasher } from "../models";
 
-export class BcryptAdapter implements IHasher {
+export class BcryptAdapter implements IHasher, IHashCompare {
+    compare(value: string, hash: string): Promise<boolean> {
+        return compare(value, hash);
+    }
     hash(value: string, salt: number): Promise<string> {
         return hash(value, salt);
     }
