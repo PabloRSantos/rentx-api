@@ -1,6 +1,7 @@
 import { parse as csvParse } from "csv-parse";
 import fs from "fs";
 
+import { ICreateCategoryDTO } from "@/modules/cars/dtos";
 import { ICategoriesRepository } from "@/modules/cars/repositories";
 import { IFile } from "@/shared/protocols";
 
@@ -8,17 +9,12 @@ interface IRequest {
     file: IFile;
 }
 
-interface IImportCategory {
-    name: string;
-    description: string;
-}
-
 export class ImportCategoryUseCase {
     constructor(private readonly categoriesRepository: ICategoriesRepository) {}
 
-    loadCategories(file: IFile): Promise<IImportCategory[]> {
+    loadCategories(file: IFile): Promise<ICreateCategoryDTO[]> {
         return new Promise((resolve, reject) => {
-            const categories: IImportCategory[] = [];
+            const categories: ICreateCategoryDTO[] = [];
             const stream = fs.createReadStream(file.path);
             const parseFile = csvParse();
             stream.pipe(parseFile);

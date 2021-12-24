@@ -1,9 +1,10 @@
 import { CategoriesRepository } from "@/modules/cars/repositories";
+import { IController } from "@/shared/protocols";
 
 import { ListCategoriesController } from "./ListCategoriesController";
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase";
 
-export const makeListCategoriesController = (): ListCategoriesController => {
+export const makeListCategoriesController = (): IController => {
     const listCategoriesRepository = new CategoriesRepository();
     const listCategoriesUseCase = new ListCategoriesUseCase(
         listCategoriesRepository

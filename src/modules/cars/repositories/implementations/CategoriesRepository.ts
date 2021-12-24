@@ -2,6 +2,7 @@ import { getRepository, Repository } from "typeorm";
 
 import { ICategoriesRepository } from "..";
 
+import { ICreateCategoryDTO } from "../../dtos";
 import { Category } from "../../entities";
 
 export class CategoriesRepository implements ICategoriesRepository {
@@ -11,10 +12,7 @@ export class CategoriesRepository implements ICategoriesRepository {
         this.repository = getRepository(Category);
     }
 
-    async create({
-        name,
-        description,
-    }: ICategoriesRepository.ICreateDTO): Promise<Category> {
+    async create({ name, description }: ICreateCategoryDTO): Promise<Category> {
         const category = this.repository.create({ name, description });
         return this.repository.save(category);
     }

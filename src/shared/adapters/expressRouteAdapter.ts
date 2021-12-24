@@ -19,9 +19,10 @@ export const adaptRoute = (controller: IController) => {
         } catch (error) {
             if (error instanceof AppError)
                 return res.status(error.statusCode).json({
-                    error: error.message || "Internal server error",
+                    error: error.message,
                 });
 
+            console.log(error.message);
             return res.status(500).json({ error: "Internal server error" });
         }
     };
