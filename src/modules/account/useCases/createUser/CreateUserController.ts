@@ -7,14 +7,13 @@ export class CreateUserController implements IController {
     constructor(private readonly createUserUseCase: CreateUserUseCase) {}
 
     async handle({ body }: HttpRequest): Promise<HttpResponse> {
-        const { name, email, password, driver_license, username } = body;
+        const { name, email, password, driver_license } = body;
 
         const user = await this.createUserUseCase.execute({
             name,
             email,
             password,
             driver_license,
-            username,
         });
 
         return ok(user);

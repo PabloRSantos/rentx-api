@@ -1,12 +1,17 @@
 import { IController } from "@/shared/protocols";
 
-import { UsersRepository } from "../../repositories/implementations/UsersRepository";
+import { BcryptAdapter } from "../../infra/hasher/implementations";
+import { UsersRepository } from "../../repositories/implementations";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export const makeCreateUserController = (): IController => {
     const createUserRepository = new UsersRepository();
-    const createUserUseCase = new CreateUserUseCase(createUserRepository);
+    const hasher = new BcryptAdapter();
+    const createUserUseCase = new CreateUserUseCase(
+        createUserRepository,
+        hasher
+    );
     const createUserController = new CreateUserController(createUserUseCase);
 
     return createUserController;

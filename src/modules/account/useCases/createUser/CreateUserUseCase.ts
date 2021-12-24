@@ -1,11 +1,31 @@
+import { BadRequestError } from "@/shared/helpers";
+
 import { ICreateUserDTO } from "../../dtos";
 import { User } from "../../entities";
+import { IHasher } from "../../infra/hasher/models";
 import { IUsersRepository } from "../../repositories/models/IUsersRepository";
 
 export class CreateUserUseCase {
-    constructor(private readonly usersRepository: IUsersRepository) {}
+    constructor(
+        private readonly usersRepository: IUsersRepository,
+        private readonly hasher: IHasher
+    ) {}
 
-    async execute(data: ICreateUserDTO): Promise<User> {
-        return this.usersRepository.create(data);
+    async execute({ password, email, ...rest }: ICreateUserDTO): Promise<User> {
+        const userAlreadyExists = await this.usersRepository.findByEmail(email);
+
+        if (userAlreadyExists) {
+            throw new BadRequestError("User already exists");
+        }
+
+        const passwordHash = await this.hasher.hash(password, 8);
+        const user = await this.usersRepository.create({
+            ...rest,
+            email,
+            password: passwordHash,
+        });
+
+        delete user.password;
+        return user;
     }
 }
