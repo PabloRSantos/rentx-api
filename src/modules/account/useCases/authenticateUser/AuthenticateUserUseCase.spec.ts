@@ -1,8 +1,8 @@
 import { BadRequestError } from "@/shared/helpers";
 
-import { User } from "../../entities";
 import { EncrypterInMemory } from "../../infra/encrypter/in-memory";
 import { HashCompareInMemory } from "../../infra/hasher/in-memory";
+import { User } from "../../infra/typeorm/entities";
 import { IUsersRepository, UsersRepositoryInMemory } from "../../repositories";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 

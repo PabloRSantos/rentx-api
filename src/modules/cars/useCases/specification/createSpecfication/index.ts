@@ -1,6 +1,6 @@
+import { SpecificationRepository } from "@/modules/cars/infra/typeorm/repositories";
 import { IController } from "@/shared/protocols";
 
-import { SpecificationRepository } from "../../../repositories";
 import { CreateSpecificationController } from "./CreateSpecificationController";
 import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 

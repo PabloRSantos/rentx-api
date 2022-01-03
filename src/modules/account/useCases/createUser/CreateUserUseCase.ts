@@ -1,8 +1,8 @@
 import { BadRequestError } from "@/shared/helpers";
 
 import { ICreateUserDTO } from "../../dtos";
-import { User } from "../../entities";
 import { IHasher } from "../../infra/hasher/models";
+import { User } from "../../infra/typeorm/entities";
 import { IUsersRepository } from "../../repositories/models/IUsersRepository";
 
 export class CreateUserUseCase {

@@ -3,7 +3,7 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 
 import swaggerSetup from "../swagger";
-import { makeConnection } from "./database";
+import { makeConnection } from "./infra/typeorm";
 
 const app = express();
 app.use(express.json());

@@ -1,7 +1,7 @@
 import { IController } from "@/shared/protocols";
 
 import { BcryptAdapter } from "../../infra/hasher/implementations";
-import { UsersRepository } from "../../repositories/implementations";
+import { UsersRepository } from "../../infra/typeorm/repositories";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 

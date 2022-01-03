@@ -1,4 +1,4 @@
-import { CategoriesRepository } from "@/modules/cars/repositories";
+import { CategoriesRepository } from "@/modules/cars/infra/typeorm/repositories";
 import { IController } from "@/shared/protocols";
 
 import { CreateCategoryController } from "./CreateCategoryController";

@@ -2,7 +2,7 @@ import { IController } from "@/shared/protocols";
 
 import { JwtAdapter } from "../../infra/encrypter/implementations";
 import { BcryptAdapter } from "../../infra/hasher/implementations";
-import { UsersRepository } from "../../repositories/implementations";
+import { UsersRepository } from "../../infra/typeorm/repositories";
 import { AuthenticateUserController } from "./AuthenticateUserController";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
