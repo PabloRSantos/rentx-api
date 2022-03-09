@@ -6,6 +6,10 @@ import { Car } from "../../infra/typeorm/entities";
 export class CarsRepositoryInMemory implements ICarsRepository {
     cars: Car[] = [];
 
+    async findById(id: string): Promise<Car> {
+        return this.cars.find((car) => car.id === id);
+    }
+
     async findAvailable(params: IListAvailableCarsDTO): Promise<Car[]> {
         return this.cars.filter((car) => {
             const brandCondition = params.brand && car.brand === params.brand;

@@ -1,21 +1,11 @@
-import { ICreateCarDTO } from "@/modules/cars/dtos";
 import { CarsRepositoryInMemory } from "@/modules/cars/repositories";
 import { BadRequestError } from "@/shared/helpers";
 
+import { makeCar } from "../test/mocks";
 import { CreateCarUseCase } from "./CreateCarUseCase";
 
 let createCarUseCase: CreateCarUseCase;
 let carsRepository: CarsRepositoryInMemory;
-
-const makeCar = (): ICreateCarDTO => ({
-    name: "Name Car",
-    description: "Description Car",
-    daily_rate: 100,
-    license_plate: "ABC-1234",
-    fine_amount: 60,
-    brand: "Brand",
-    category_id: "Category",
-});
 
 describe("Create Car", () => {
     beforeEach(() => {

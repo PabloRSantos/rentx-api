@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import {
     makeCreateCarController,
+    makeCreateCarSpecificationController,
     makeListAvailableCarsController,
 } from "@/modules/cars/useCases/car";
 
@@ -17,6 +18,13 @@ carsRouter.post(
     adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
     adaptMiddleware(makeEnsureAdminMiddleware()),
     adaptRoute(makeCreateCarController())
+);
+
+carsRouter.post(
+    "/specifications/:id",
+    adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    adaptMiddleware(makeEnsureAdminMiddleware()),
+    adaptRoute(makeCreateCarSpecificationController())
 );
 
 carsRouter.get("/available", adaptRoute(makeListAvailableCarsController()));
