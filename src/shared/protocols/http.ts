@@ -17,12 +17,11 @@ export type HttpResponse = {
     body?: any;
 };
 
-export type HttpRequest = {
-    body?: any;
+export type HttpRequest<T = any, P = any, Q = any> = {
+    body?: T;
     file?: IFile;
+    query?: Q;
     userId?: string;
     headers?: any;
-    params?: {
-        [key: string]: string;
-    };
+    params?: P;
 };

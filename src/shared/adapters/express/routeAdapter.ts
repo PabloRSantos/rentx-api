@@ -10,6 +10,7 @@ export const adaptRoute = (controller: IController) => {
             params: req.params,
             file: req.file,
             userId: req?.userId,
+            query: req.query,
         };
 
         try {

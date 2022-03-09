@@ -12,6 +12,7 @@ export const adaptMiddleware = (middleware: IMiddleware) => {
     ): Promise<any> => {
         const httpRequest: HttpRequest = {
             headers: req.headers,
+            userId: req.userId,
         };
 
         try {

@@ -7,7 +7,10 @@ import {
     makeImportCategoryController,
 } from "../../modules/cars/useCases";
 import { adaptMiddleware, adaptRoute } from "../adapters";
-import { makeEnsureAuthenticatedMiddleware } from "../middlewares";
+import {
+    makeEnsureAdminMiddleware,
+    makeEnsureAuthenticatedMiddleware,
+} from "../middlewares";
 
 const categoryRoutes = Router();
 
@@ -18,6 +21,7 @@ const upload = multer({
 categoryRoutes.post(
     "/",
     adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    adaptMiddleware(makeEnsureAdminMiddleware()),
     adaptRoute(makeCategoryController())
 );
 categoryRoutes.get("/", adaptRoute(makeListCategoriesController()));
@@ -25,6 +29,7 @@ categoryRoutes.post(
     "/import",
     upload.single("file"),
     adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    adaptMiddleware(makeEnsureAdminMiddleware()),
     adaptRoute(makeImportCategoryController())
 );
 

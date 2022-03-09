@@ -1,10 +1,24 @@
 import { Router } from "express";
 
-import { makeCreateCarController } from "@/modules/cars/useCases/car";
+import {
+    makeCreateCarController,
+    makeListAvailableCarsController,
+} from "@/modules/cars/useCases/car";
 
-import { adaptRoute } from "../adapters";
+import { adaptMiddleware, adaptRoute } from "../adapters";
+import {
+    makeEnsureAdminMiddleware,
+    makeEnsureAuthenticatedMiddleware,
+} from "../middlewares";
 
 const carsRouter = Router();
-carsRouter.post("/", adaptRoute(makeCreateCarController()));
+carsRouter.post(
+    "/",
+    adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    adaptMiddleware(makeEnsureAdminMiddleware()),
+    adaptRoute(makeCreateCarController())
+);
+
+carsRouter.get("/available", adaptRoute(makeListAvailableCarsController()));
 
 export { carsRouter };
