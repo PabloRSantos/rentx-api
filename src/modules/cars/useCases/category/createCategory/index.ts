@@ -1,13 +1,12 @@
-import { CategoriesRepository } from "@/modules/cars/infra/typeorm/repositories";
+import { makeCategoriesRepository } from "@/modules/cars/repositories/factories";
 import { IController } from "@/shared/protocols";
 
 import { CreateCategoryController } from "./CreateCategoryController";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
 export const makeCategoryController = (): IController => {
-    const createCategoryRepository = new CategoriesRepository();
     const createCategoryUseCase = new CreateCategoryUseCase(
-        createCategoryRepository
+        makeCategoriesRepository()
     );
     const createCategoryController = new CreateCategoryController(
         createCategoryUseCase

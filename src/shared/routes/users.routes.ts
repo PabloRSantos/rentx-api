@@ -13,8 +13,8 @@ const uploadAvatar = new UploadConfig("./tmp/avatar").upload();
 usersRouter.post("/", adaptRoute(makeCreateUserController()));
 usersRouter.patch(
     "/avatar",
-    uploadAvatar.single("avatar"),
     adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    uploadAvatar.single("avatar"),
     adaptRoute(makeUpdateUserAvatarController())
 );
 

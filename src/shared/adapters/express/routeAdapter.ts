@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import { AppError } from "@/shared/helpers";
-import { IController, HttpRequest } from "@/shared/protocols";
+import { IController, HttpRequest, IFile } from "@/shared/protocols";
 
 export const adaptRoute = (controller: IController) => {
     return async (req: Request, res: Response): Promise<Response> => {
@@ -9,6 +9,7 @@ export const adaptRoute = (controller: IController) => {
             body: req.body,
             params: req.params,
             file: req.file,
+            files: req.files as IFile[],
             userId: req?.userId,
             query: req.query,
         };

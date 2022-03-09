@@ -20,6 +20,7 @@ export type HttpResponse = {
 export type HttpRequest<T = any, P = any, Q = any> = {
     body?: T;
     file?: IFile;
+    files?: IFile[];
     query?: Q;
     userId?: string;
     headers?: any;

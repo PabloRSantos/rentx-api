@@ -1,13 +1,12 @@
-import { CarsRepository } from "@/modules/cars/infra/typeorm/repositories";
+import { makeCarRepository } from "@/modules/cars/repositories/factories";
 import { IController } from "@/shared/protocols";
 
 import { ListAvailableCarsController } from "./ListAvailableCarsController";
 import { ListAvailableCarsUseCase } from "./ListAvailableCarsUseCase";
 
 export const makeListAvailableCarsController = (): IController => {
-    const listAvailableCarsRepository = new CarsRepository();
     const listAvailableCarsUseCase = new ListAvailableCarsUseCase(
-        listAvailableCarsRepository
+        makeCarRepository()
     );
     const listAvailableCarsController = new ListAvailableCarsController(
         listAvailableCarsUseCase

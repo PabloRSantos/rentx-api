@@ -1,7 +1,6 @@
-import { IDecrypter } from "@/modules/account/infra/encrypter/models";
 import { IUsersRepository } from "@/modules/account/repositories/models";
 
-import { BadRequestError, noContent, NotFoundError, ok } from "../../helpers";
+import { BadRequestError, noContent } from "../../helpers";
 import { HttpRequest, HttpResponse, IMiddleware } from "../../protocols";
 
 export class EnsureAdmin implements IMiddleware {
@@ -9,7 +8,6 @@ export class EnsureAdmin implements IMiddleware {
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
         const { userId } = httpRequest;
-        console.log({ userId });
         const user = await this.usersRepository.findById(userId);
 
         if (!user.isAdmin) {
