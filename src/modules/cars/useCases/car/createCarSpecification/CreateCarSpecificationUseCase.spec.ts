@@ -4,7 +4,7 @@ import {
 } from "@/modules/cars/repositories";
 import { BadRequestError } from "@/shared/helpers";
 
-import { makeCar, makeSpecification } from "../test/mocks";
+import { makeCar, makeSpecification } from "../../../test/mocks";
 import { CreateCarSpecificationUseCase } from "./CreateCarSpecificationUseCase";
 
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase;

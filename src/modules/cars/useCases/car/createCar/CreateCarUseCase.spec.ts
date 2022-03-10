@@ -1,7 +1,7 @@
 import { CarsRepositoryInMemory } from "@/modules/cars/repositories";
 import { BadRequestError } from "@/shared/helpers";
 
-import { makeCar } from "../test/mocks";
+import { makeCar } from "../../../test/mocks";
 import { CreateCarUseCase } from "./CreateCarUseCase";
 
 let createCarUseCase: CreateCarUseCase;
