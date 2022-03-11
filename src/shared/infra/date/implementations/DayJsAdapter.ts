@@ -22,4 +22,12 @@ export class DayJsAdapter implements IDateAdapter {
 
         return compare;
     }
+
+    compareInDays(start_date: Date, end_date: Date): number {
+        const end_date_utc = this.convertToUTC(end_date);
+        const start_date_utc = this.convertToUTC(start_date);
+        const compare = dayjs(end_date_utc).diff(dayjs(start_date_utc), "days");
+
+        return compare;
+    }
 }

@@ -1,3 +1,4 @@
+import { makeCarRepository } from "@/modules/cars/repositories/factories";
 import { makeDayJsAdapter } from "@/shared/infra/date/factories";
 import { IController } from "@/shared/protocols";
 
@@ -8,7 +9,8 @@ import { CreateRentalUseCase } from "./CreateRentalUseCase";
 export const makeCreateRentalController = (): IController => {
     const createRentalUseCase = new CreateRentalUseCase(
         makeRentalsRepository(),
-        makeDayJsAdapter()
+        makeDayJsAdapter(),
+        makeCarRepository()
     );
     const createRentalController = new CreateRentalController(
         createRentalUseCase

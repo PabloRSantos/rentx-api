@@ -1,6 +1,9 @@
 import { Router } from "express";
 
-import { makeCreateRentalController } from "@/modules/rentals/useCases";
+import {
+    makeCreateRentalController,
+    makeDevolutionRentalController,
+} from "@/modules/rentals/useCases";
 
 import { adaptMiddleware, adaptRoute } from "../adapters";
 import { makeEnsureAuthenticatedMiddleware } from "../middlewares";
@@ -11,6 +14,12 @@ rentalsRouter.post(
     "/",
     adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
     adaptRoute(makeCreateRentalController())
+);
+
+rentalsRouter.post(
+    "/devolution/:id",
+    adaptMiddleware(makeEnsureAuthenticatedMiddleware()),
+    adaptRoute(makeDevolutionRentalController())
 );
 
 export { rentalsRouter };
