@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 
+import { CarsRepositoryInMemory } from "@/modules/cars/repositories";
 import { BadRequestError } from "@/shared/helpers";
 import { DayJsAdapter } from "@/shared/infra/date/implementations";
 
@@ -9,15 +10,18 @@ import { CreateRentalUseCase } from "./CreateRentalUseCase";
 
 let createRentalUseCase: CreateRentalUseCase;
 let rentalsRepositoryInMemory: RentalsRepositoryInMemory;
+let carsRepositoryInMemory: CarsRepositoryInMemory;
 let dayJsAdapter: DayJsAdapter;
 
 describe("Create Rental", () => {
     beforeEach(() => {
         rentalsRepositoryInMemory = new RentalsRepositoryInMemory();
+        carsRepositoryInMemory = new CarsRepositoryInMemory();
         dayJsAdapter = new DayJsAdapter();
         createRentalUseCase = new CreateRentalUseCase(
             rentalsRepositoryInMemory,
-            dayJsAdapter
+            dayJsAdapter,
+            carsRepositoryInMemory
         );
     });
 

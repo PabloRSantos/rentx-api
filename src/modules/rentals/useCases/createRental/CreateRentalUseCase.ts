@@ -1,3 +1,4 @@
+import { ICarsRepository } from "@/modules/cars/repositories";
 import { BadRequestError } from "@/shared/helpers";
 import { IDateAdapter } from "@/shared/infra/date/models";
 
@@ -10,7 +11,8 @@ type IRequest = ICreateRentalDTO;
 export class CreateRentalUseCase {
     constructor(
         private readonly rentalsRepository: IRentalsRepository,
-        private readonly dateAdapter: IDateAdapter
+        private readonly dateAdapter: IDateAdapter,
+        private readonly carsRepository: ICarsRepository
     ) {}
 
     async execute({
@@ -45,10 +47,14 @@ export class CreateRentalUseCase {
         if (compare < minimumHour) {
             throw new BadRequestError("invalid return time!");
         }
-        return this.rentalsRepository.create({
+        const rental = await this.rentalsRepository.create({
             user_id,
             car_id,
             expected_return_date,
         });
+
+        await this.carsRepository.updateAvailable(car_id, false);
+
+        return rental;
     }
 }
