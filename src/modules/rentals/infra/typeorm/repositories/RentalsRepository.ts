@@ -12,6 +12,13 @@ export class RentalsRepository implements IRentalsRepository {
         this.repository = getRepository(Rental);
     }
 
+    findByUser(user_id: string): Promise<Rental[]> {
+        return this.repository.find({
+            where: { user_id },
+            relations: ["car"],
+        });
+    }
+
     findById(id: string): Promise<Rental> {
         return this.repository.findOne({ id });
     }
