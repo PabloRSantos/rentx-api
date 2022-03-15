@@ -29,7 +29,9 @@ describe("Create Car Specification", () => {
         };
 
         const promise = createCarSpecificationUseCase.execute(request);
-        await expect(promise).rejects.toBeInstanceOf(BadRequestError);
+        await expect(promise).rejects.toEqual(
+            new BadRequestError("Car does not exists!")
+        );
     });
 
     it("should be able to add a new specification to the car", async () => {

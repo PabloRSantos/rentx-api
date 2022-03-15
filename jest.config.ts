@@ -7,6 +7,7 @@ export default {
     coverageProvider: "v8",
     preset: "ts-jest",
     testMatch: ["**/*.spec.ts"],
+    testTimeout: 10000,
     moduleNameMapper: pathsToModuleNameMapper(
         {
             "@/*": ["*"],

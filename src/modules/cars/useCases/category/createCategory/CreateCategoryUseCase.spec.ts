@@ -36,6 +36,8 @@ describe("Create Category", () => {
         await createCategoryUseCase.execute(category);
         const promise = createCategoryUseCase.execute(category);
 
-        await expect(promise).rejects.toBeInstanceOf(BadRequestError);
+        await expect(promise).rejects.toEqual(
+            new BadRequestError("Category already exists!")
+        );
     });
 });

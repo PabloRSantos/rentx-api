@@ -49,7 +49,7 @@ describe("Create Category Controller", () => {
         expect(response.status).toBe(204);
     });
 
-    it("should not be able to create a new category with name xists", async () => {
+    it("should not be able to create a new category with name exists", async () => {
         const token = await makeToken();
 
         const response = await request(app)
@@ -60,6 +60,6 @@ describe("Create Category Controller", () => {
             })
             .set({ Authorization: `Bearer ${token}` });
 
-        expect(response.status).toBe(400);
+        expect(response.status).toBe(404);
     });
 });

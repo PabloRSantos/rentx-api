@@ -21,7 +21,9 @@ describe("Create Car", () => {
     it("should not be able to create a car with exists license plate", async () => {
         await createCarUseCase.execute(makeCar());
         const promise = createCarUseCase.execute(makeCar());
-        await expect(promise).rejects.toBeInstanceOf(BadRequestError);
+        await expect(promise).rejects.toEqual(
+            new BadRequestError("Car already exists!")
+        );
     });
 
     it("should be able to create a car with available true by default", async () => {

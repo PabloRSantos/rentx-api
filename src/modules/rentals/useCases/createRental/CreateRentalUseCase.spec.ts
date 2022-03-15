@@ -5,6 +5,7 @@ import { BadRequestError } from "@/shared/helpers";
 import { DayJsAdapter } from "@/shared/infra/date/implementations";
 
 import { RentalsRepositoryInMemory } from "../../repositories/in-memory";
+import { makeCar } from "../../test/mocks/car";
 import { makeRental } from "../../test/mocks/rental";
 import { CreateRentalUseCase } from "./CreateRentalUseCase";
 
@@ -26,26 +27,39 @@ describe("Create Rental", () => {
     });
 
     it("should be able to create a new rental", async () => {
-        const rental = await createRentalUseCase.execute(makeRental());
+        const car = await carsRepositoryInMemory.create(makeCar());
+        const rental = await createRentalUseCase.execute(
+            makeRental({ car_id: car.id })
+        );
 
         expect(rental).toHaveProperty("id");
         expect(rental).toHaveProperty("start_date");
     });
 
     it("should not be able to create a new rental if there is another open to the same user", async () => {
-        await createRentalUseCase.execute(makeRental());
-        const promise = createRentalUseCase.execute(makeRental());
+        const car = await carsRepositoryInMemory.create(makeCar());
+        await createRentalUseCase.execute(makeRental({ car_id: car.id }));
+        const promise = createRentalUseCase.execute(
+            makeRental({ car_id: car.id })
+        );
 
-        await expect(promise).rejects.toBeInstanceOf(BadRequestError);
+        await expect(promise).rejects.toEqual(
+            new BadRequestError("Car is unavailable")
+        );
     });
 
     it("should not be able to create a new rental if there is another open to the same car", async () => {
-        await createRentalUseCase.execute(makeRental({ user_id: "234" }));
+        const car = await carsRepositoryInMemory.create(makeCar());
+        await createRentalUseCase.execute(
+            makeRental({ user_id: "234", car_id: car.id })
+        );
         const promise = createRentalUseCase.execute(
-            makeRental({ user_id: "567" })
+            makeRental({ user_id: "567", car_id: car.id })
         );
 
-        await expect(promise).rejects.toBeInstanceOf(BadRequestError);
+        await expect(promise).rejects.toEqual(
+            new BadRequestError("Car is unavailable")
+        );
     });
 
     it("should not be able to create a new rental if invalid return time", async () => {
@@ -53,6 +67,8 @@ describe("Create Rental", () => {
             makeRental({ expected_return_date: dayjs().toDate() })
         );
 
-        await expect(promise).rejects.toBeInstanceOf(BadRequestError);
+        await expect(promise).rejects.toEqual(
+            new BadRequestError("invalid return time!")
+        );
     });
 });
