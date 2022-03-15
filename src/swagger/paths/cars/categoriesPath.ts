@@ -3,6 +3,7 @@ export const categoriesPath = {
         tags: ["Category"],
         summary: "Create a category",
         description: "Create a new category",
+        security: [{ bearerAuth: [] }],
         requestBody: {
             content: {
                 "application/json": {
@@ -49,6 +50,7 @@ export const categoriesPath = {
             tags: ["Category"],
             summary: "Upload a new category",
             description: "Upload a new category",
+            security: [{ bearerAuth: [] }],
             requestBody: {
                 content: {
                     "multipart/form-data": {

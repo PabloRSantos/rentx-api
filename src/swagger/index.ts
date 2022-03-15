@@ -1,3 +1,4 @@
+import { components } from "./components";
 import { paths } from "./paths";
 import { schemas } from "./schemas";
 
@@ -21,4 +22,5 @@ export default {
     ],
     paths,
     schemas,
+    components,
 };

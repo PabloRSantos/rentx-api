@@ -3,6 +3,7 @@ export const specificationsPath = {
         tags: ["Specifications"],
         summary: "Create a specification",
         description: "Create a new specification",
+        security: [{ bearerAuth: [] }],
         requestBody: {
             content: {
                 "application/json": {
