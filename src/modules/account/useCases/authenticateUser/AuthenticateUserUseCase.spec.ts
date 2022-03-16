@@ -1,39 +1,42 @@
 import { BadRequestError } from "@/shared/helpers";
+import { DayJsAdapter } from "@/shared/infra/date/implementations";
 
 import { EncrypterInMemory } from "../../infra/encrypter/in-memory";
 import { HashCompareInMemory } from "../../infra/hasher/in-memory";
 import { User } from "../../infra/typeorm/entities";
-import { IUsersRepository, UsersRepositoryInMemory } from "../../repositories";
+import {
+    IUsersRepository,
+    UsersRepositoryInMemory,
+    UsersTokensRepositoryInMemory,
+} from "../../repositories";
+import { makeUser } from "../../test/mocks";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 let authenticateUserUseCase: AuthenticateUserUseCase;
 let usersRepositoryInMemory: IUsersRepository;
 let encrypterInMemory: EncrypterInMemory;
 let hashCompareInMemory: HashCompareInMemory;
-
-const makeUser = (): Promise<User> => {
-    return usersRepositoryInMemory.create({
-        driver_license: "0001321",
-        email: "user@test.com",
-        password: "hash_password",
-        name: "user test",
-    });
-};
+let usersTokensRepositoryInMemory: UsersTokensRepositoryInMemory;
+let dateAdapter: DayJsAdapter;
 
 describe("Authenticate User", () => {
     beforeEach(() => {
         hashCompareInMemory = new HashCompareInMemory();
         encrypterInMemory = new EncrypterInMemory();
         usersRepositoryInMemory = new UsersRepositoryInMemory();
+        usersTokensRepositoryInMemory = new UsersTokensRepositoryInMemory();
+        dateAdapter = new DayJsAdapter();
         authenticateUserUseCase = new AuthenticateUserUseCase(
             hashCompareInMemory,
             encrypterInMemory,
-            usersRepositoryInMemory
+            usersRepositoryInMemory,
+            usersTokensRepositoryInMemory,
+            dateAdapter
         );
     });
 
     it("should be able to authenticate an user", async () => {
-        const user = await makeUser();
+        const user = await usersRepositoryInMemory.create(makeUser());
 
         const result = await authenticateUserUseCase.execute({
             email: user.email,
@@ -47,7 +50,7 @@ describe("Authenticate User", () => {
 
         expect(encrypterInMemory.options).toMatchObject({
             subject: user.id,
-            expiresIn: "1d",
+            expiresIn: "30d",
         });
 
         expect(result).toHaveProperty("token");
@@ -65,7 +68,7 @@ describe("Authenticate User", () => {
     });
 
     it("should not be able to authenticate an user if password not match", async () => {
-        const user = await makeUser();
+        const user = await usersRepositoryInMemory.create(makeUser());
         hashCompareInMemory.response = false;
         const promise = authenticateUserUseCase.execute({
             email: user.email,
