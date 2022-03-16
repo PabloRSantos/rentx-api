@@ -6,6 +6,9 @@ import { IDateAdapter } from "../models";
 dayjs.extend(utc);
 
 export class DayJsAdapter implements IDateAdapter {
+    addDays(currentDate: Date, days: number): Date {
+        return dayjs(currentDate).add(days, "days").toDate();
+    }
     dateNow(): Date {
         return dayjs().toDate();
     }

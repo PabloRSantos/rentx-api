@@ -1,9 +1,11 @@
 import { sign, verify } from "jsonwebtoken";
 
+import { authConfig } from "@/config";
+
 import { IDecrypter, IEncrypter } from "../models";
 
 export class JwtAdapter implements IEncrypter, IDecrypter {
-    private readonly secret = "a7e071b3de48cec1dd24de6cbe6c7bf1";
+    private readonly secret = authConfig.secret_token;
 
     decrypt(value: string): IDecrypter.IResponse {
         return verify(value, this.secret) as IDecrypter.IResponse;

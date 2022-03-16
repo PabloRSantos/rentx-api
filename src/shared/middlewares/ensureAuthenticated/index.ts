@@ -1,15 +1,13 @@
-import { JwtAdapter } from "@/modules/account/infra/encrypter/implementations";
-import { UsersRepository } from "@/modules/account/infra/typeorm/repositories";
+import { makeJwtDecrypter } from "@/modules/account/infra/encrypter/factories";
+import { makeUsersRepository } from "@/modules/account/repositories/factories";
 import { IMiddleware } from "@/shared/protocols";
 
 import { EnsureAuthenticated } from "./ensureAuthenticatedMiddleware";
 
 export const makeEnsureAuthenticatedMiddleware = (): IMiddleware => {
-    const decrypter = new JwtAdapter();
-    const usersRepository = new UsersRepository();
     const ensureAuthenticatedMiddleware = new EnsureAuthenticated(
-        decrypter,
-        usersRepository
+        makeJwtDecrypter(),
+        makeUsersRepository()
     );
 
     return ensureAuthenticatedMiddleware;

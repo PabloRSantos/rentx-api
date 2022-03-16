@@ -1,8 +1,10 @@
 import { Router } from "express";
 
 import { UploadConfig } from "@/config";
-import { makeCreateUserController } from "@/modules/account/useCases/createUser";
-import { makeUpdateUserAvatarController } from "@/modules/account/useCases/updateUserAvatar";
+import {
+    makeCreateUserController,
+    makeUpdateUserAvatarController,
+} from "@/modules/account/useCases";
 
 import { adaptMiddleware, adaptRoute } from "../adapters";
 import { makeEnsureAuthenticatedMiddleware } from "../middlewares";
