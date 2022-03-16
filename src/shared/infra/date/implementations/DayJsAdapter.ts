@@ -6,6 +6,12 @@ import { IDateAdapter } from "../models";
 dayjs.extend(utc);
 
 export class DayJsAdapter implements IDateAdapter {
+    compareIfBefore(start_date: Date, end_date: Date): boolean {
+        return dayjs(start_date).isBefore(end_date);
+    }
+    addHours(currentDate: Date, hours: number): Date {
+        return dayjs(currentDate).add(hours, "hours").toDate();
+    }
     addDays(currentDate: Date, days: number): Date {
         return dayjs(currentDate).add(days, "days").toDate();
     }

@@ -58,7 +58,7 @@ export class AuthenticateUserUseCase {
             { subject: user.id, expiresIn: authConfig.expires_in_refresh_token }
         );
         const refreshTokenExpiresDate = this.dateAdapter.addDays(
-            new Date(),
+            this.dateAdapter.dateNow(),
             authConfig.expires_refresh_token_days
         );
         await this.usersTokensRepository.create({
