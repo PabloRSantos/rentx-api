@@ -11,7 +11,7 @@ export class S3StorageAdapter implements IStorage {
     private client: S3;
     constructor() {
         this.client = new S3({
-            region: process.env.AWS_BUCKET_REGION,
+            region: process.env.AWS_REGION,
         });
     }
 
