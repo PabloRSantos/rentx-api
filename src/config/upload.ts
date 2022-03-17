@@ -2,12 +2,12 @@ import multer, { Multer } from "multer";
 import { resolve } from "path";
 
 export class UploadConfig {
-    constructor(private readonly folder: string) {}
+    static tempFolder = resolve(__dirname, "..", "..", "tmp");
 
-    upload(): Multer {
+    static upload(): Multer {
         return multer({
             storage: multer.diskStorage({
-                destination: resolve(__dirname, "..", "..", this.folder),
+                destination: resolve(UploadConfig.tempFolder),
                 filename: (_, file, callback) => {
                     const fileName = `${new Date().getTime()}-${
                         file.originalname

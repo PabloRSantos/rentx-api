@@ -15,7 +15,7 @@ import {
 } from "../middlewares";
 
 const carsRouter = Router();
-const upload = new UploadConfig("./tmp/cars").upload();
+const upload = UploadConfig.upload();
 
 carsRouter.post(
     "/",

@@ -9,6 +9,11 @@ interface IRequest {
     token: string;
 }
 
+interface IResponse {
+    token: string;
+    refresh_token: string;
+}
+
 export class RefreshTokenUseCase {
     constructor(
         private readonly decrypter: IDecrypter,
@@ -17,7 +22,7 @@ export class RefreshTokenUseCase {
         private readonly dateAdapter: IDateAdapter
     ) {}
 
-    async execute({ token }: IRequest) {
+    async execute({ token }: IRequest): Promise<IResponse> {
         const decode = this.decrypter.decrypt(token);
         const userId = decode.sub as string;
 
@@ -47,6 +52,14 @@ export class RefreshTokenUseCase {
             user_id: userId,
         });
 
-        return refreshToken;
+        const newToken = this.encrypter.encrypt(
+            {},
+            { subject: userId, expiresIn: authConfig.expires_in_token }
+        );
+
+        return {
+            refresh_token: refreshToken,
+            token: newToken,
+        };
     }
 }

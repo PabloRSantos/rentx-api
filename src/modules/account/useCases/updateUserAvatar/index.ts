@@ -1,4 +1,4 @@
-import { DiskStorageAdapter } from "@/shared/infra/storage/implementations";
+import { makeDiskStorageAdapter } from "@/shared/infra/storage/factories";
 import { IController } from "@/shared/protocols";
 
 import { makeUsersRepository } from "../../repositories/factories";
@@ -6,10 +6,9 @@ import { UpdateUserAvatarController } from "./UpdateUserAvatarController";
 import { UpdateUserAvatarUseCase } from "./UpdateUserAvatarUseCase";
 
 export const makeUpdateUserAvatarController = (): IController => {
-    const storage = new DiskStorageAdapter();
     const updateUserAvatarUseCase = new UpdateUserAvatarUseCase(
         makeUsersRepository(),
-        storage
+        makeDiskStorageAdapter()
     );
     const updateUserAvatarController = new UpdateUserAvatarController(
         updateUserAvatarUseCase
