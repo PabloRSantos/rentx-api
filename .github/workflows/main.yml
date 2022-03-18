@@ -35,8 +35,8 @@ jobs:
         
       - uses: nogsantos/scp-deploy@master
         with:
-          source: "., !node_modules"
-          target: "test"
+          src: "., !node_modules"
+          remote: "test"
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           user: ${{ secrets.SSH_USER }}
