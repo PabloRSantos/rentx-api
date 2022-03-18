@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeUpdateUserAvatarController = void 0;
 
-var _factories = require("@/shared/infra/storage/factories");
+var _factories = require("../../../../shared/infra/storage/factories");
 
 var _factories2 = require("../../repositories/factories");
 

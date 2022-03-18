@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RefreshTokenUseCase = void 0;
 
-var _config = require("@/config");
+var _config = require("../../../../config");
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../shared/helpers");
 
 class RefreshTokenUseCase {
   constructor(decrypter, usersTokensRepository, encrypter, dateAdapter) {

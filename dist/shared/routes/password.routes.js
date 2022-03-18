@@ -7,7 +7,7 @@ exports.passwordRouter = void 0;
 
 var _express = require("express");
 
-var _useCases = require("@/modules/account/useCases");
+var _useCases = require("../../modules/account/useCases");
 
 var _adapters = require("../adapters");
 

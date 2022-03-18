@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.adaptRoute = void 0;
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../helpers");
 
 const adaptRoute = controller => {
   return async (req, res) => {

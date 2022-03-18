@@ -1,8 +1,8 @@
 "use strict";
 
-var _repositories = require("@/modules/cars/repositories");
+var _repositories = require("../../../repositories");
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../../shared/helpers");
 
 var _mocks = require("../../../test/mocks");
 

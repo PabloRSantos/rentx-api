@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeSendForgotPasswordController = void 0;
 
-var _factories = require("@/shared/infra/date/factories");
+var _factories = require("../../../../shared/infra/date/factories");
 
-var _factories2 = require("@/shared/infra/mail/factories");
+var _factories2 = require("../../../../shared/infra/mail/factories");
 
 var _factories3 = require("../../repositories/factories");
 

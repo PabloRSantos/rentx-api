@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CreateSpecificationController = void 0;
 
-var _http = require("@/shared/helpers/http");
+var _http = require("../../../../../shared/helpers/http");
 
 class CreateSpecificationController {
   constructor(createSpecificationUseCase) {

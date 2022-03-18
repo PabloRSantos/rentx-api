@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeEnsureAuthenticatedMiddleware = void 0;
 
-var _factories = require("@/modules/account/infra/encrypter/factories");
+var _factories = require("../../../modules/account/infra/encrypter/factories");
 
-var _factories2 = require("@/modules/account/repositories/factories");
+var _factories2 = require("../../../modules/account/repositories/factories");
 
 var _ensureAuthenticatedMiddleware = require("./ensureAuthenticatedMiddleware");
 

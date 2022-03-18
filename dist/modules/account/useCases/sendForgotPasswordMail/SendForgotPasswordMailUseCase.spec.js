@@ -1,10 +1,10 @@
 "use strict";
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../shared/helpers");
 
-var _implementations = require("@/shared/infra/date/implementations");
+var _implementations = require("../../../../shared/infra/date/implementations");
 
-var _inMemory = require("@/shared/infra/mail/in-memory");
+var _inMemory = require("../../../../shared/infra/mail/in-memory");
 
 var _repositories = require("../../repositories");
 

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ListRentalsByUserController = void 0;
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../shared/helpers");
 
 class ListRentalsByUserController {
   constructor(listRentalsByUserUseCase) {

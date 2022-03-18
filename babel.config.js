@@ -4,7 +4,7 @@ module.exports = {
         "@babel/preset-typescript",
     ],
     plugins: [
-        ["module-resolver", { alias: { "@": ["./src"] } }],
+        ["module-resolver", { alias: { "@": "./src" } }],
         "babel-plugin-transform-typescript-metadata",
         ["@babel/plugin-proposal-decorators", { legacy: true }],
         ['@babel/plugin-proposal-class-properties', { losse: true }]

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeEnsureAdminMiddleware = void 0;
 
-var _repositories = require("@/modules/account/infra/typeorm/repositories");
+var _repositories = require("../../../modules/account/infra/typeorm/repositories");
 
 var _ensureAdminMiddleware = require("./ensureAdminMiddleware");
 

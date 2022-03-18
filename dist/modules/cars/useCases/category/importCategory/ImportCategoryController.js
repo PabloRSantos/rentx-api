@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ImportCategoryController = void 0;
 
-var _http = require("@/shared/helpers/http");
+var _http = require("../../../../../shared/helpers/http");
 
 class ImportCategoryController {
   constructor(importCategoryUseCase) {

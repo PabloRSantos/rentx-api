@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeUploadCarImageController = void 0;
 
-var _factories = require("@/modules/cars/repositories/factories");
+var _factories = require("../../../repositories/factories");
 
-var _factories2 = require("@/shared/infra/storage/factories");
+var _factories2 = require("../../../../../shared/infra/storage/factories");
 
 var _UploadCarImageController = require("./UploadCarImageController");
 

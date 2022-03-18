@@ -9,7 +9,7 @@ var _path = require("path");
 
 var _uuid = require("uuid");
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../shared/helpers");
 
 class SendForgotPasswordMailUseCase {
   constructor(usersRepository, usersTokensRepository, dateAdapter, mailAdapter) {

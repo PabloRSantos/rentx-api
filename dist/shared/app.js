@@ -13,7 +13,7 @@ require("dotenv/config");
 
 var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 
-var _config2 = require("@/config");
+var _config2 = require("../config");
 
 var _swagger = _interopRequireDefault(require("../swagger"));
 

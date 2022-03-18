@@ -1,8 +1,8 @@
 "use strict";
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../shared/helpers");
 
-var _implementations = require("@/shared/infra/date/implementations");
+var _implementations = require("../../../../shared/infra/date/implementations");
 
 var _inMemory = require("../../infra/encrypter/in-memory");
 

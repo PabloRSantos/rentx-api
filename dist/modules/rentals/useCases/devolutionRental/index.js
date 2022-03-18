@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeDevolutionRentalController = void 0;
 
-var _factories = require("@/modules/cars/repositories/factories");
+var _factories = require("../../../cars/repositories/factories");
 
-var _factories2 = require("@/shared/infra/date/factories");
+var _factories2 = require("../../../../shared/infra/date/factories");
 
 var _factories3 = require("../../repositories/factories");
 

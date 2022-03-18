@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ListAvailableCarsController = void 0;
 
-var _http = require("@/shared/helpers/http");
+var _http = require("../../../../../shared/helpers/http");
 
 class ListAvailableCarsController {
   constructor(listAvailableCarsUseCase) {

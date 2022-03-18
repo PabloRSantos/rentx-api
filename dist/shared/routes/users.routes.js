@@ -7,9 +7,9 @@ exports.usersRouter = void 0;
 
 var _express = require("express");
 
-var _config = require("@/config");
+var _config = require("../../config");
 
-var _useCases = require("@/modules/account/useCases");
+var _useCases = require("../../modules/account/useCases");
 
 var _adapters = require("../adapters");
 

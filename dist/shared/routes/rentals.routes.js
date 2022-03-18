@@ -7,7 +7,7 @@ exports.rentalsRouter = void 0;
 
 var _express = require("express");
 
-var _useCases = require("@/modules/rentals/useCases");
+var _useCases = require("../../modules/rentals/useCases");
 
 var _adapters = require("../adapters");
 

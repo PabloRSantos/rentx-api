@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.adaptMiddleware = void 0;
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../helpers");
 
 const adaptMiddleware = middleware => {
   return async (req, res, next) => {

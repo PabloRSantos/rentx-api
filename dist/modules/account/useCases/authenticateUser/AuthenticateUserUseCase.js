@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.AuthenticateUserUseCase = void 0;
 
-var _config = require("@/config");
+var _config = require("../../../../config");
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../shared/helpers");
 
 class AuthenticateUserUseCase {
   constructor(hashCompare, encrypter, usersRepository, usersTokensRepository, dateAdapter) {

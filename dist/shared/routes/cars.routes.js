@@ -7,11 +7,11 @@ exports.carsRouter = void 0;
 
 var _express = require("express");
 
-var _config = require("@/config");
+var _config = require("../../config");
 
-var _car = require("@/modules/cars/useCases/car");
+var _car = require("../../modules/cars/useCases/car");
 
-var _uploadCarImage = require("@/modules/cars/useCases/car/uploadCarImage");
+var _uploadCarImage = require("../../modules/cars/useCases/car/uploadCarImage");
 
 var _adapters = require("../adapters");
 

@@ -6,9 +6,9 @@ var _supertest = _interopRequireDefault(require("supertest"));
 
 var _uuid = require("uuid");
 
-var _app = require("@/shared/app");
+var _app = require("../../../../../shared/app");
 
-var _typeorm = require("@/shared/infra/typeorm");
+var _typeorm = require("../../../../../shared/infra/typeorm");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

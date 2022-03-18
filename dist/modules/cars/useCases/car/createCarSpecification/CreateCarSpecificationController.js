@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.CreateCarSpecificationController = void 0;
 
-var _helpers = require("@/shared/helpers");
+var _helpers = require("../../../../../shared/helpers");
 
 class CreateCarSpecificationController {
   constructor(createCarSpecificationUseCase) {

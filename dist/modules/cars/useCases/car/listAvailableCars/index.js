@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeListAvailableCarsController = void 0;
 
-var _factories = require("@/modules/cars/repositories/factories");
+var _factories = require("../../../repositories/factories");
 
 var _ListAvailableCarsController = require("./ListAvailableCarsController");
 

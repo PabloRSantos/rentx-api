@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.makeAuthenticateUserController = void 0;
 
-var _factories = require("@/shared/infra/date/factories");
+var _factories = require("../../../../shared/infra/date/factories");
 
 var _factories2 = require("../../infra/encrypter/factories");
 
