@@ -4,10 +4,10 @@ WORKDIR /usr/app
 
 COPY package.json ./
 
-RUN npm install
+RUN npm install 
 
-COPY . .
+COPY ./dist ./dist
 
 EXPOSE 3333
 
-CMD ["npm", "run", "dev"]
+CMD ["node", "./dist/shared/server.js"]
